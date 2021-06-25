@@ -34,6 +34,28 @@ app.get('/books', (req, res)=>{
 });
 });
 
+app.get('/books/:id', function(req,res){
+    res.setHeader("Content-Type","application/json");
+    console.log("Getting Book with id:", req.params.id);
+    Books.findById(req.params.id,(err, books)=>{
+        if(err){
+            console.log(`there was an error finding Book with id ${req.params.id}`, err);
+            res.status(500).send(
+                JSON.stringify({
+                message: `unable to find Book with id provided ${req.params.id}`,
+                error: err,
+            }));
+        }else if(Books===null){
+            res.status(404).send(JSON.stringify({
+                error: "Unable to find Book",
+            }))
+        }else{
+            res.status(200).json(books)
+        }
+    });
+});
+
+
 app.post("", function(req, res) {
     res.setHeader("Content-Type", "application/json");
     
