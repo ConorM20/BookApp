@@ -56,17 +56,18 @@ app.get('/books/:id', function(req,res){
 });
 
 
-app.post("", function(req, res) {
+app.post("/books", function(req, res) {
     res.setHeader("Content-Type", "application/json");
     
-    let creatingReview = {
-        bookName: req.body.name || "",
-        bookReview: req.body.review || "",
-        bookRating: req.body.rating || 0,
-        bookOwn: req.body.own || false
+        creatingReview = {
+        name: req.body.name || "",
+        author: req.body.author || "",
+        review: req.body.review || "",
+        rating: req.body.rating || 0,
+        own: req.body.own || false,
     };
 
-    Review.create(creatingReview, (err,review) => {
+    Books.create(creatingReview, (err,books) => {
         if (err) {
             console.log("unable to post review");
             res.status(500).json({
@@ -74,6 +75,8 @@ app.post("", function(req, res) {
                 error: err
             })
             return;
+        } else{
+            res.status(201).json(books);
         }
     })
 })
