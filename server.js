@@ -37,9 +37,23 @@ app.get('/books', (req, res)=>{
 app.post("", function(req, res) {
     res.setHeader("Content-Type", "application/json");
     
-    let userReview = {
+    let creatingReview = {
         bookName: req.body.name || "",
-    }
+        bookReview: req.body.review || "",
+        bookRating: req.body.rating || 0,
+        bookOwn: req.body.own || false
+    };
+
+    Review.create(creatingReview, (err,review) => {
+        if (err) {
+            console.log("unable to post review");
+            res.status(500).json({
+                message: "unable to post review",
+                error: err
+            })
+            return;
+        }
+    })
 })
 
 
