@@ -15,6 +15,14 @@ app.use((req, res, next)=>{
     next();
 });
 
+app.post("", function(req, res) {
+    res.setHeader("Content-Type", "application/json");
+    
+    let userReview = {
+        bookName: req.body.name || "",
+    }
+})
+
 
 
 
