@@ -87,7 +87,12 @@ app.post("", function(req, res) {
 
 
 
+app.delete('/todo/:id',(req,res)=>{
 
+
+
+    
+})
 
 
 
