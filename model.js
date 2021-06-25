@@ -12,13 +12,13 @@ const bookSchema = mongoose.Schema({
     own: Boolean,
     
 });
-const books = mongoose.model("Books", bookSchema)
+const Books = mongoose.model("Books", bookSchema)
 
 const store =  {
 };
 
 module.exports = {
-    books,
+    Books,
     store,
     
 }; 
