@@ -15,16 +15,9 @@ app.use((req, res, next)=>{
     next();
 });
 
-<<<<<<< HEAD
-app.post("", function(req, res) {
-    res.setHeader("Content-Type", "application/json");
-    
-    let userReview = {
-        bookName: req.body.name || "",
-    }
-})
 
-=======
+
+
 app.get('/books', (req, res)=>{
     res.setHeader("Content-Type","application/json");
     console.log("Getting all Books");
@@ -40,8 +33,14 @@ app.get('/books', (req, res)=>{
     
 });
 });
->>>>>>> d026cb27bc6c198fb1d143bec331c134e500555c
 
+app.post("", function(req, res) {
+    res.setHeader("Content-Type", "application/json");
+    
+    let userReview = {
+        bookName: req.body.name || "",
+    }
+})
 
 
 
